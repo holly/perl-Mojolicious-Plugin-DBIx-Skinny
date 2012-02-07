@@ -1,0 +1,28 @@
+NAME
+    Mojolicious::Plugin::DBIx::Skinny - Mojolicious Plugin
+
+SYNOPSIS
+      # Mojolicious
+      $self->plugin('DBIx::Skinny', { dsn => "dbi:Pg:dbname=foo", username => "bar", password => "", connect_options => { RaiseError => 1, AutoCommit => 1 } });
+
+      # Mojolicious::Lite
+      plugin 'DBIx::Skinny', { dsn => "dbi:Pg:dbname=foo", username => "bar", password => "", connect_options => { RaiseError => 1, AutoCommit => 1 } };
+
+      # in your controller
+      $self->skinny->single("tb_name", { id => 1 });
+
+DESCRIPTION
+    Mojolicious::Plugin::DBIx::Skinny is a Mojolicious plugin.
+
+METHODS
+    Mojolicious::Plugin::DBIx::Skinny inherits all methods from
+    Mojolicious::Plugin and implements the following new ones.
+
+  "register"
+      $plugin->register;
+
+    Register plugin in Mojolicious application.
+
+SEE ALSO
+    Mojolicious, Mojolicious::Guides, <http://mojolicio.us>.
+
