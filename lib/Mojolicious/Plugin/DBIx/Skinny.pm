@@ -3,7 +3,7 @@ use Mojo::Base 'Mojolicious::Plugin';
 
 use strict;
 use Carp qw(croak);
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 sub register {
 
@@ -21,6 +21,7 @@ sub register {
 			my $skinny = $model->new;
 			$skinny->connect($config->{dbi_option});
 			$skinny->schema->load_schema($config->{dbi_option});
+			return $skinny;
 	});
 
 	$app->renderer->add_helper(
@@ -50,7 +51,7 @@ Mojolicious::Plugin::DBIx::Skinny - Mojolicious Plugin
             password => "",
             connect_options => { RaiseError => 1, AutoCommit => 1 }
         }
-  );
+  });
   
   # Mojolicious::Lite
   plugin 'DBIx::Skinny', {
