@@ -3,7 +3,7 @@ use Mojo::Base 'Mojolicious::Plugin';
 
 use strict;
 use Carp qw(croak);
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 sub register {
 
@@ -42,11 +42,27 @@ Mojolicious::Plugin::DBIx::Skinny - Mojolicious Plugin
 =head1 SYNOPSIS
 
   # Mojolicious
-  $self->plugin('DBIx::Skinny', { dsn => "dbi:Pg:dbname=foo", username => "bar", password => "", connect_options => { RaiseError => 1, AutoCommit => 1 } });
-
+  $self->plugin('DBIx::Skinny', { 
+        model => "MyApp::Model",
+        dbi_option => { 
+            dsn => "dbi:Pg:dbname=foo",
+            username => "bar",
+            password => "",
+            connect_options => { RaiseError => 1, AutoCommit => 1 }
+        }
+  );
+  
   # Mojolicious::Lite
-  plugin 'DBIx::Skinny', { dsn => "dbi:Pg:dbname=foo", username => "bar", password => "", connect_options => { RaiseError => 1, AutoCommit => 1 } };
-
+  plugin 'DBIx::Skinny', {
+        model => "MyApp::Model",
+        dbi_option => { 
+            dsn => "dbi:Pg:dbname=foo",
+            username => "bar",
+            password => "",
+            connect_options => { RaiseError => 1, AutoCommit => 1 }
+        }
+  };
+  
   # in your controller
   $self->skinny->single("tb_name", { id => 1 });
 
